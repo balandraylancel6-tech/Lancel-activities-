@@ -1,0 +1,43 @@
+﻿// Simple Shopping Program
+
+// 3 Variables
+let name = "lancel";
+let money = 500;
+let total = 350;
+
+// 3 Arrays
+let items = ["Shirt", "Shoes", "Bag"];
+let prices = [100, 150, 100];
+let colors = ["Red", "Black", "Blue"];
+
+// Loop 1
+for (let i = 0; i < items.length; i++) {
+    console.log(items[i]);
+}
+
+// Loop 2
+for (let i = 0; i < prices.length; i++) {
+    console.log(prices[i]);
+}
+
+// Loop 3
+for (let i = 0; i < colors.length; i++) {
+    console.log(colors[i]);
+}
+
+// Conditional 1
+if (money >= total) {
+    console.log("You can buy the items.");
+}
+
+// Conditional 2
+if (total > 300) {
+    console.log("Expensive");
+}
+
+// Conditional 3
+if (money < total) {
+    console.log("Not enough money");
+} else {
+    console.log("You have enough money");
+}

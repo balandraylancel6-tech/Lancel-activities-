@@ -1,0 +1,331 @@
+
+// 1. VARIABLES / PROPERTIES
+let businessName = "Hope's Photography Rentals";
+let location = "Calbayog City";
+let rentalLimit = 2;
+
+
+// 2. ARRAYS - 3
+let equipment = [
+    "Canon Camera",
+    "Sony Camera",
+    "Tripod",
+    "Camera Lens"
+];
+
+let equipmentTypes = [
+    "Camera",
+    "Camera",
+    "Accessory",
+    "Lens"
+];
+
+let customers = [
+    "Mark",
+    "Bea",
+    "Carlo"
+];
+
+
+// 3. OBJECT LITERAL #1
+const businessInfo = {
+    name: "Hope's Photography Rentals",
+    contact: "09123456789",
+
+    showInfo() {
+        console.log(
+            this.name + " - " + this.contact
+        );
+    }
+};
+
+
+// 4. OBJECT LITERAL #2
+const rentalStaff = {
+    name: "Liza",
+    position: "Rental Staff",
+
+    showStaff() {
+        console.log(
+            this.name + " is the " + this.position
+        );
+    }
+};
+
+
+// ==========================================
+// CLASS #1 - PERSON
+// ==========================================
+
+class Person {
+
+    // ENCAPSULATION #1
+    #name;
+
+    constructor(name) {
+        this.#name = name;
+    }
+
+    // METHOD #1
+    getName() {
+        return this.#name;
+    }
+
+    // METHOD #2
+    introduce() {
+        return "My name is " + this.#name;
+    }
+}
+
+
+// ==========================================
+// CLASS #2 - CUSTOMER
+// INHERITANCE #1
+// ==========================================
+
+class Customer extends Person {
+
+    constructor(name, equipment) {
+        super(name);
+        this.equipment = equipment;
+    }
+
+    // METHOD #3
+    rentEquipment() {
+
+        // CONDITIONAL #1
+        if (this.equipment !== "") {
+
+            return this.getName() +
+                " rented the " +
+                this.equipment;
+
+        } else {
+
+            return "No equipment selected";
+        }
+    }
+}
+
+
+// ==========================================
+// CLASS #3 - STAFF
+// INHERITANCE #2
+// ==========================================
+
+class Staff extends Person {
+
+    constructor(name, position) {
+        super(name);
+        this.position = position;
+    }
+
+    // METHOD #4
+    assistCustomer() {
+
+        return this.getName() +
+            " is assisting the customer.";
+    }
+
+    // POLYMORPHISM
+    introduce() {
+
+        return this.getName() +
+            " works at Hope's Photography Rentals.";
+    }
+}
+
+
+// ==========================================
+// CLASS #4 - RENTAL SHOP
+// ==========================================
+
+class RentalShop {
+
+    // ENCAPSULATION #2
+    #equipment;
+
+    constructor(equipment) {
+        this.#equipment = equipment;
+    }
+
+    // METHOD #5
+    showEquipment() {
+
+        console.log("\nPHOTOGRAPHY EQUIPMENT");
+
+        // LOOP #1
+        for (let item of this.#equipment) {
+
+            console.log(
+                "- " + item
+            );
+        }
+    }
+
+    // METHOD #6
+    checkEquipment(itemName) {
+
+        // LOOP #2
+        for (let item of this.#equipment) {
+
+            // CONDITIONAL #2
+            if (
+                item.toLowerCase() ===
+                itemName.toLowerCase()
+            ) {
+
+                return item +
+                    " is available for rent.";
+            }
+        }
+
+        return itemName +
+            " is not available.";
+    }
+
+    // METHOD #7
+    addEquipment(itemName) {
+
+        // CONDITIONAL #3
+        if (itemName !== "") {
+
+            this.#equipment.push(itemName);
+
+            return itemName +
+                " was added to the equipment list.";
+
+        } else {
+
+            return "Equipment name cannot be empty.";
+        }
+    }
+}
+
+
+// ==========================================
+// ABSTRACTION
+// ==========================================
+
+// The availability-checking process is hidden
+// inside this function.
+
+function rentItem(customer, item, shop) {
+
+    let result = shop.checkEquipment(item);
+
+    if (result.includes("available")) {
+
+        console.log(
+            customer.rentEquipment()
+        );
+
+    } else {
+
+        console.log(
+            "Rental failed: " + result
+        );
+    }
+}
+
+
+// ==========================================
+// 4 OBJECTS
+// ==========================================
+
+let customer1 = new Customer(
+    "Mark",
+    "Canon Camera"
+);
+
+let customer2 = new Customer(
+    "Bea",
+    "Tripod"
+);
+
+let staff1 = new Staff(
+    "Liza",
+    "Rental Assistant"
+);
+
+let rentalShop = new RentalShop(
+    equipment
+);
+
+
+// ==========================================
+// PROGRAM OUTPUT
+// ==========================================
+
+console.log("==============================");
+console.log("  PHOTOGRAPHY EQUIPMENT RENTAL");
+console.log("==============================");
+
+console.log(
+    "Business: " + businessName
+);
+
+console.log(
+    "Location: " + location
+);
+
+
+// Object Literal #1
+businessInfo.showInfo();
+
+// Object Literal #2
+rentalStaff.showStaff();
+
+
+// Display equipment
+rentalShop.showEquipment();
+
+
+// Check equipment
+console.log(
+    rentalShop.checkEquipment("Canon Camera")
+);
+
+
+// Rent equipment
+rentItem(
+    customer1,
+    "Canon Camera",
+    rentalShop
+);
+
+
+// Staff action
+console.log(
+    staff1.assistCustomer()
+);
+
+
+// ==========================================
+// POLYMORPHISM
+// ==========================================
+
+console.log("\nPEOPLE");
+
+let people = [
+    customer1,
+    staff1
+];
+
+// LOOP #3
+for (let person of people) {
+
+    console.log(
+        person.introduce()
+    );
+}
+
+
+// Add new equipment
+console.log(
+    rentalShop.addEquipment("Ring Light")
+);
+
+
+// Display updated equipment
+rentalShop.showEquipment();

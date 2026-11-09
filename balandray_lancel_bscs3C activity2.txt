@@ -1,0 +1,71 @@
+﻿// ACTIVITY 1.2 - Lancel
+class Animal { 
+    constructor(name, age) { 
+        this.name = name; 
+        this.age = age; 
+    } 
+    getName() { 
+        return this.name; 
+    } 
+    makeSound() { 
+        return "Some animal sound"; 
+    } 
+    describe() { 
+        return this.name + " is " + this.age + " years old."; 
+    } 
+} 
+
+class Dog extends Animal { 
+    constructor(name, age, breed) { 
+        super(name, age); 
+        this.breed = breed; 
+    } 
+    makeSound() { 
+        return this.name + " says: Woof!"; 
+    } 
+} 
+
+class Cat extends Animal { 
+    constructor(name, age, indoor) { 
+        super(name, age); 
+        this.indoor = indoor; 
+    } 
+    makeSound() { 
+        return this.name + " says: Meow!"; 
+    } 
+} 
+
+class Shelter { 
+    constructor(name) { 
+        this.name = name; 
+        this.animals = []; 
+    } 
+    addAnimal(animal) { 
+        this.animals.push(animal); 
+    } 
+    countAnimals() { 
+        return this.animals.length; 
+    } 
+} 
+
+// Variables
+var shelterName = "Pet House"; 
+var totalSounds = 0; 
+var checkedCount = 0; 
+
+// Objects
+var petFood = { type: "kibble", amount: 2 }; 
+var vetInfo = { name: "Dr. Tulle", phone: "09706883613" }; 
+
+// Create animals
+var dog1 = new Dog("Blacky", 3, "Labrador"); 
+var dog2 = new Dog("Whity", 7, "Beagle"); 
+var cat1 = new Cat("Jaguar", 2, true); 
+var shelter = new Shelter(shelterName); 
+
+// Arrays
+var animalList = [dog1, dog2, cat1]; 
+var foodTypes = ["kibble", "wet food", "treats"]; 
+var shelterTasks = ["feed", "clean", "walk"]; 
+
+// Display tasks

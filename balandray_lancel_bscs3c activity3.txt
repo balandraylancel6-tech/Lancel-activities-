@@ -1,0 +1,171 @@
+﻿// ACTIVITY 1.3
+// 1. Const Variables
+
+const schoolName = "Northwest Samar State University";
+const maxStudents = 45;
+const passingGrade = 75;
+const subject = "English";
+const teacherName = "Mr. lancel cutie ";
+
+const students = [
+    { name: "bogoy", score: 88, club: "Art" },
+    { name: "Marlon", score: 76, club: "Chess" },
+    { name: "Shael", score: 94, club: "Art" },
+    { name: "Temi", score: 82, club: "Music" }
+];
+
+const school = {
+    name: schoolName,
+    city: "rawis",
+    phone: "09265062705"
+};
+
+
+// 2. Let Variables
+
+let totalScore = 85;
+let studentCount = 45;
+let highestScore = 95;
+let lowestScore = 70;
+let averageScore = 76;
+let passedCount = 28;
+let failedCount = 17;
+
+
+// 3. Arrow Functions
+
+const greet = (name) => {
+    return "Hello, " + name + "!";
+};
+
+const didPass = (score) => {
+    return score >= passingGrade;
+};
+
+const addPoints = (score, bonus) => {
+    return score + bonus;
+};
+
+const shout = (text) => {
+    return text.toUpperCase();
+};
+
+const describeStudent = (name, score) => {
+    return name + " scored " + score + " points.";
+};
+
+
+// 4. Display Information
+
+console.log("Welcome to " + schoolName + "!");
+console.log("Today is Monday and " + subject + " class is starting.");
+console.log("Your teacher is " + teacherName + ".");
+
+
+// 5. Object Destructuring
+
+const { name: firstStudentName, score: firstStudentScore } = students[0];
+
+const { city, phone } = school;
+
+
+// 6. Array Destructuring
+
+const [firstStudent, secondStudent] = students;
+
+const scores = [70, 80, 90];
+
+const [lowScore, midScore, highScore] = scores;
+
+
+// 7. Filter
+
+const passingStudents = students.filter(didPass);
+
+const artClubStudents = students.filter((student) => {
+    return student.club === "Art";
+});
+
+
+// 8. Map
+
+const studentNames = students.map((student) => {
+    return student.name;
+});
+
+const studentMessages = students.map((student) => {
+    return describeStudent(student.name, student.score);
+});
+
+
+// 9. Calculations
+
+for (const student of students) {
+
+    totalScore = totalScore + student.score;
+    studentCount = studentCount + 1;
+
+    if (student.score > highestScore) {
+        highestScore = student.score;
+    }
+
+    if (student.score < lowestScore) {
+        lowestScore = student.score;
+    }
+
+    if (didPass(student.score)) {
+        passedCount = passedCount + 1;
+    } else {
+        failedCount = failedCount + 1;
+    }
+}
+
+
+// 10. Average
+
+averageScore = totalScore / studentCount;
+
+
+// 11. Final Output
+
+console.log("========================");
+console.log("STUDENT SUMMARY");
+console.log("========================");
+
+console.log("Number of students: " + studentCount);
+console.log("Maximum students: " + maxStudents);
+console.log("Total score: " + totalScore);
+console.log("Highest score: " + highestScore);
+console.log("Lowest score: " + lowestScore);
+console.log("Average score: " + averageScore);
+console.log("Passed students: " + passedCount);
+console.log("Failed students: " + failedCount);
+
+console.log("========================");
+
+console.log("First student: " + firstStudentName);
+console.log("First student score: " + firstStudentScore);
+console.log("Municipality: " + city);
+console.log("Phone number: " + phone);
+
+console.log("========================");
+
+console.log("Passing students: " + passingStudents.length);
+console.log("Art club students: " + artClubStudents.length);
+
+console.log("========================");
+
+console.log("Student names:");
+
+for (let i = 0; i < studentNames.length; i++) {
+    console.log(studentNames[i]);
+}
+
+console.log("========================");
+
+console.log("Student messages:");
+
+for (let i = 0; i < studentMessages.length; i++) {
+    console.log(studentMessages[i]);
+}
+
